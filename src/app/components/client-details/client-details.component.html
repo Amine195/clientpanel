@@ -18,10 +18,31 @@
         <h6>Client ID: {{id}}</h6>
       </div>
       <div class="col-md-4">
-        <!-- BALANCE GOES HERE -->
+        <h3 class="pull-right">
+          Balance:
+          <span
+          [class.text-danger]="hasBalance"
+          [class.text-success]="!hasBalance"
+          >
+          {{ client.balance  | currency:"USD":true }}
+          </span>
+          <small>
+            <a (click)="showBalanceUpdateInput = !showBalanceUpdateInput"><i class="fa fa-pencil"></i></a>
+          </small>
+        </h3>
+        <div class="clearfix">
+          <form *ngIf="showBalanceUpdateInput" (submit)="updateBalance(id)" class="form-inline pull-right">
+            <div class="form-group">
+              <input type="text" [(ngModel)]="client.balance" name="balance" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+          </form>
+        </div>
       </div>
     </div>
-    <br>
+
+    <hr>
+
     <ul class="lis-group">
       <li class="list-group-item">Contact Email: {{client.email}}</li>
       <li class="list-group-item">Contact Phone: {{client.phone}}</li>
