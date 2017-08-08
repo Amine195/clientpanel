@@ -28,6 +28,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 // Service Imports
 import { ClientService } from './services/client.service';
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
   { path:'client/:id', component:ClientDetailsComponent, canActivate:[AuthGuard] },
   { path:'edit-client/:id', component:EditClientComponent, canActivate:[AuthGuard] },
   { path:'settings', component:SettingsComponent, canActivate:[AuthGuard] },
+  { path:'forgot', component:ForgotPasswordComponent },
   { path:'**', component:PageNotFoundComponent}
 ];
 
@@ -70,7 +72,8 @@ export const firebaseConfig = {
     LoginComponent,
     RegisterComponent,
     SettingsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

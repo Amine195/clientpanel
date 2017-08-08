@@ -4,13 +4,12 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.css']
 })
-export class LoginComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
   email:string;
-  password:string;
 
   constructor(
     private authService:AuthService,
@@ -22,14 +21,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.authService.login(this.email, this.password)
+    this.authService.resetPassword(this.email)
     .then((res) => {
-      this.flashMessagesService.show('You are logged in', { cssClass:'alert-success', timeout:4000});
-      this.router.navigate(['/'])
+      this.flashMessagesService.show('Message has been send', { cssClass:'alert-success', timeout:4000});
+      this.router.navigate(['/forgot'])
     })
     .catch((err) => {
       this.flashMessagesService.show(err.message, { cssClass:'alert-danger', timeout:4000});
-      this.router.navigate(['/login'])
+      this.router.navigate(['/forgot'])
     });
   }
+
 }
