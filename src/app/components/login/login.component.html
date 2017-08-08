@@ -15,7 +15,10 @@
           </div>
           <input type="submit" class="btn btn-primary btn-block" value="Submit">
         </form>
+        <br>
         <a routerLink="/forgot" class="btn btn-link pull-right">Forgot Password</a>
+        <button (click)="loginWithGoogle()" class="btn btn-primary">login with Google</button>
+        <button (click)="loginWithFacebook()" class="btn btn-primary">login with facebook</button>
       </div>
     </div>
   </div>

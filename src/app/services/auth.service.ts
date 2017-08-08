@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -43,5 +44,24 @@ export class AuthService {
           err => reject(err));
     });
   }
+
+  // Login With Google
+  loginWithGoogle(){
+    return new Promise((resolve, reject) => {
+    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(userData => resolve(userData),
+          err => reject(err));
+    });
+  }
+
+  // Login With Facebook
+  loginWithFacebook(){
+    return new Promise((resolve, reject) => {
+    this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+      .then(userData => resolve(userData),
+          err => reject(err));
+    });
+  }
+
 
 }

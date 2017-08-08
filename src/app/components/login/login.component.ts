@@ -32,4 +32,29 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/login'])
     });
   }
+
+  loginWithGoogle(){
+    this.authService.loginWithGoogle()
+    .then((res) => {
+      this.flashMessagesService.show('You are logged in', { cssClass:'alert-success', timeout:4000});
+      this.router.navigate(['/'])
+    })
+    .catch((err) => {
+      this.flashMessagesService.show(err.message, { cssClass:'alert-danger', timeout:4000});
+      this.router.navigate(['/login'])
+    });
+  }
+
+  loginWithFacebook(){
+    this.authService.loginWithFacebook()
+    .then((res) => {
+      this.flashMessagesService.show('You are logged in', { cssClass:'alert-success', timeout:4000});
+      this.router.navigate(['/'])
+    })
+    .catch((err) => {
+      this.flashMessagesService.show(err.message, { cssClass:'alert-danger', timeout:4000});
+      this.router.navigate(['/login'])
+    });
+  }
+
 }
